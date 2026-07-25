@@ -1,0 +1,173 @@
+{
+	"name": "main",
+	"reload_style_on_change": true,
+	"margin-top": 8,
+	"margin-left": 4,
+	"margin-right": 4,
+	"margin-bottom": 4,
+	"height": 32,
+	"modules-left": [
+		"custom/weather",
+		"custom/spotify"
+	],
+	"modules-center": [
+		"pulseaudio#microphone",
+		"wireplumber",
+		"network",
+		"hyprland/workspaces#left",
+		"clock",
+		"hyprland/workspaces#right",
+		"battery",
+		"backlight",
+		"tray"
+	],
+	"modules-right": [
+		"idle_inhibitor",
+		"custom/cpu",
+		"custom/memory",
+		"custom/disk",
+		"custom/temperature"
+	],
+	"custom/weather": {
+		"interval": 60,
+		"exec": "/home/afonso/Dotfiles/waybar/.config/waybar/scripts/weather.sh",
+		"return-type": "json",
+		"format": "{}"
+	},
+	"custom/spotify": {
+		"exec": "/home/afonso/Dotfiles/waybar/.config/waybar/scripts/spotify.sh",
+		"format": " <span size='75%'>{}</span> ",
+		"tooltip": false
+	},
+	"pulseaudio#microphone": {
+		"format": "{format_source}",
+		"format-source": "",
+		"format-source-muted": "",
+		"tooltip": false
+	},
+	"wireplumber": {
+		"format": "{icon}",
+		"format-icons": [
+			"",
+			"",
+			""
+		],
+		"format-muted": "",
+		"tooltip": false
+	},
+	"network": {
+		"interval": 5,
+		"format": "{icon}",
+		"format-icons": {
+			"disconnected": "󰤭",
+			"wifi": [
+				"󰤯",
+				"󰤟",
+				"󰤢",
+				"󰤥",
+				"󰤨"
+			],
+			"ethernet": ""
+		},
+		"tooltip-format": "{essid}"
+	},
+	"hyprland/workspaces#left": {
+		"format": "{icon}",
+		"persistent-workspaces": {
+			"1": [],
+			"2": []
+		},
+		"ignore-workspaces": [
+			"3",
+			"4"
+		]
+	},
+	"clock": {
+		"format": "{:%H:%M}",
+		"tooltip-format": "{:%A, %d %B %Y}"
+	},
+	"hyprland/workspaces#right": {
+		"format": "{icon}",
+		"persistent-workspaces": {
+			"3": [],
+			"4": []
+		},
+		"ignore-workspaces": [
+			"1",
+			"2"
+		]
+	},
+	"battery": {
+		"interval": 5,
+		"format": "{icon}",
+		"format-icons": {
+			"default": [
+				"󰁺",
+				"󰁻",
+				"󰁼",
+				"󰁽",
+				"󰁾",
+				"󰁿",
+				"󰂀",
+				"󰂁",
+				"󰂂",
+				"󰁹"
+			],
+			"charging": "󰂄"
+		},
+		"states": {
+			"warning": 20,
+			"critical": 10
+		},
+		"events": {
+			"on-discharging-warning": "brightnessctl -s set 50% && notify-send -u normal -t 10000 -i battery-low 'Low battery!' 'Battery at 20%.'",
+			"on-discharging-critical": "brightnessctl -s set 0% && notify-send -u critical -i battery-empty 'Very Low Battery!' 'Battery at 10%.'"
+		},
+		"tooltip-format": "{capacity}%"
+	},
+	"backlight": {
+		"format": "{icon}",
+		"format-icons": [
+			"󰃞",
+			"󰃟",
+			"󰃠"
+		],
+		"tooltip": false
+	},
+	"tray": {
+		"icon-size": 16,
+		"spacing": 8
+	},
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "󱐋",
+			"deactivated": "󰤄"
+		},
+		"tooltip": false
+	},
+	"custom/cpu": {
+		"interval": 2,
+		"return-type": "json",
+		"exec": "/home/afonso/Dotfiles/waybar/.config/waybar/scripts/ring.sh cpu",
+		"format": "{}"
+	},
+	"custom/memory": {
+		"interval": 5,
+		"return-type": "json",
+		"exec": "/home/afonso/Dotfiles/waybar/.config/waybar/scripts/ring.sh memory",
+		"format": "{}"
+	},
+	"custom/disk": {
+		"interval": 5,
+		"return-type": "json",
+		"exec": "/home/afonso/Dotfiles/waybar/.config/waybar/scripts/ring.sh disk",
+		"format": "{}"
+	},
+	"custom/temperature": {
+		"interval": 5,
+		"return-type": "json",
+		"exec": "/home/afonso/Dotfiles/waybar/.config/waybar/scripts/ring.sh temp",
+		"format": "{}"
+	}
+}

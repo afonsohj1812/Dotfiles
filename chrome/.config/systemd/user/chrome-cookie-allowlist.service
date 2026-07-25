@@ -1,0 +1,6 @@
+[Unit]
+Description=Regenerate Chrome cookie keep-list from bookmark bar
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/chrome-cookie-allowlist

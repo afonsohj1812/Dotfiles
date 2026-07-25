@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch central colour palette for changes
+
+[Path]
+PathChanged=%h/.config/colors/colors.conf
+Unit=colors-apply.service
+
+[Install]
+WantedBy=default.target

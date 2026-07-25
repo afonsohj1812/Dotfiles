@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch Chrome bookmark bar for changes
+
+[Path]
+PathChanged=%h/.config/google-chrome/Default/Bookmarks
+Unit=chrome-cookie-allowlist.service
+
+[Install]
+WantedBy=default.target

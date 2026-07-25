@@ -1,0 +1,48 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+format = """
+[](black1)\
+[󰣇 ](fg:white bg:black1)\
+$username\
+[](fg:black1 bg:red)\
+$directory\
+[](fg:red bg:orange)\
+$time\
+[ ](fg:orange)\
+$line_break$character"""
+
+palette = "default"
+[palettes.default]
+black0 = "#0f0f0f"
+black1 = "#1f1f1f"
+black2 = "#4f4f4f"
+black3 = "#8f8f8f"
+white = "#ffffff"
+red = "#ff3f3f"
+orange = "#ff9f3f"
+yellow = "#ffff5b"
+green = "#5bff5b"
+cyan = "#00ffff"
+blue = "#3f3fff"
+purple = "#ff00ff"
+[username]
+format = "[$user ]($style)"
+style_root = "fg:white bg:black1"
+style_user = "fg:white bg:black1"
+show_always = true
+
+[directory]
+format = "[ $path ]($style)"
+style = "fg:black0 bg:red"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[time]
+format = "[  $time ](bold $style)"
+style = "fg:black0 bg:orange"
+time_format = "%R"
+disabled = false
+
+[character]
+success_symbol = "[](bold fg:white)"
+error_symbol = "[](bold fg:red)"

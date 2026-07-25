@@ -1,0 +1,301 @@
+@import "/home/afonso/Dotfiles/colors/.config/colors/colors.css";
+
+
+* {
+	font-family: "JetBrains Mono Nerd Font";
+	font-size: 16px;
+	border: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+#waybar {
+	background-color: transparent;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+	background-color: @black0;
+	border-radius: 16px;
+	padding: 4px 4px;
+}
+
+#custom-weather {
+	font-weight: bold;
+}
+
+#custom-spotify {
+	background-color: @black1;
+	border-radius: 16px;
+	color: @white;
+	font-weight: bold;
+	padding: 0px 8px;
+}
+
+#clock {
+	color: @white;
+	font-weight: bold;
+	margin: 0px 4px;
+}
+
+#workspaces {
+	background-color: @black1;
+	border-radius: 12px;
+	margin: 0px 4px;
+}
+
+#workspaces button {
+	color: @white;
+	font-weight: bold;
+	border-radius: 12px;
+	margin: 0px 8px;
+	padding: 0px 4px;
+	transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+}
+
+#workspaces button:hover {
+	text-shadow: inherit;
+	box-shadow: inherit;
+	background: inherit;
+	background-color: @black1;
+}
+
+#workspaces button.empty {
+	color: @black2;
+}
+
+#workspaces button.active,
+#workspaces button.visible {
+	background-color: @red;
+	color: @black0;
+	margin: 0px 4px;
+	padding: 0px 8px;
+}
+
+#workspaces button.active {
+	color: @white;
+}
+
+#custom-weather,
+#pulseaudio,
+#wireplumber,
+#network,
+#battery,
+#backlight,
+#tray,
+#custom-cpu,
+#custom-memory,
+#custom-disk,
+#custom-temperature {
+	color: @white;
+	border-radius: 12px;
+	margin: 0px 4px;
+	padding: 0px 8px;
+	min-width: 12px;
+}
+
+#tray {
+	background-color: @black1;
+}
+
+#idle_inhibitor {
+	color: @white;
+	border-radius: 12px;
+	margin: 0px 4px;
+	padding: 0px 8px;
+}
+
+#idle_inhibitor.activated {
+	background-color: @red;
+}
+
+#network.disconnected,
+#battery.critical,
+#custom-cpu.critical,
+#custom-memory.critical,
+#custom-disk.critical,
+#custom-temperature.critical {
+	background-color: @red;
+	color: @white;
+}
+
+#custom-cpu,
+#custom-memory,
+#custom-disk,
+#custom-temperature {
+	font-size: 12px;
+	min-width: 24px;
+	padding: 0px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 22px 22px;
+}
+
+.ring-0 {
+	background-image: url("rings/ring-0.svg");
+}
+
+.ring-1 {
+	background-image: url("rings/ring-1.svg");
+}
+
+.ring-2 {
+	background-image: url("rings/ring-2.svg");
+}
+
+.ring-3 {
+	background-image: url("rings/ring-3.svg");
+}
+
+.ring-4 {
+	background-image: url("rings/ring-4.svg");
+}
+
+.ring-5 {
+	background-image: url("rings/ring-5.svg");
+}
+
+.ring-6 {
+	background-image: url("rings/ring-6.svg");
+}
+
+.ring-7 {
+	background-image: url("rings/ring-7.svg");
+}
+
+.ring-8 {
+	background-image: url("rings/ring-8.svg");
+}
+
+.ring-9 {
+	background-image: url("rings/ring-9.svg");
+}
+
+.ring-10 {
+	background-image: url("rings/ring-10.svg");
+}
+
+.ring-11 {
+	background-image: url("rings/ring-11.svg");
+}
+
+.ring-12 {
+	background-image: url("rings/ring-12.svg");
+}
+
+.ring-13 {
+	background-image: url("rings/ring-13.svg");
+}
+
+.ring-14 {
+	background-image: url("rings/ring-14.svg");
+}
+
+.ring-15 {
+	background-image: url("rings/ring-15.svg");
+}
+
+.ring-16 {
+	background-image: url("rings/ring-16.svg");
+}
+
+.ring-17 {
+	background-image: url("rings/ring-17.svg");
+}
+
+.ring-18 {
+	background-image: url("rings/ring-18.svg");
+}
+
+.ring-19 {
+	background-image: url("rings/ring-19.svg");
+}
+
+.ring-20 {
+	background-image: url("rings/ring-20.svg");
+}
+
+.ring-0.critical {
+	background-image: url("rings/ring-white-0.svg");
+}
+
+.ring-1.critical {
+	background-image: url("rings/ring-white-1.svg");
+}
+
+.ring-2.critical {
+	background-image: url("rings/ring-white-2.svg");
+}
+
+.ring-3.critical {
+	background-image: url("rings/ring-white-3.svg");
+}
+
+.ring-4.critical {
+	background-image: url("rings/ring-white-4.svg");
+}
+
+.ring-5.critical {
+	background-image: url("rings/ring-white-5.svg");
+}
+
+.ring-6.critical {
+	background-image: url("rings/ring-white-6.svg");
+}
+
+.ring-7.critical {
+	background-image: url("rings/ring-white-7.svg");
+}
+
+.ring-8.critical {
+	background-image: url("rings/ring-white-8.svg");
+}
+
+.ring-9.critical {
+	background-image: url("rings/ring-white-9.svg");
+}
+
+.ring-10.critical {
+	background-image: url("rings/ring-white-10.svg");
+}
+
+.ring-11.critical {
+	background-image: url("rings/ring-white-11.svg");
+}
+
+.ring-12.critical {
+	background-image: url("rings/ring-white-12.svg");
+}
+
+.ring-13.critical {
+	background-image: url("rings/ring-white-13.svg");
+}
+
+.ring-14.critical {
+	background-image: url("rings/ring-white-14.svg");
+}
+
+.ring-15.critical {
+	background-image: url("rings/ring-white-15.svg");
+}
+
+.ring-16.critical {
+	background-image: url("rings/ring-white-16.svg");
+}
+
+.ring-17.critical {
+	background-image: url("rings/ring-white-17.svg");
+}
+
+.ring-18.critical {
+	background-image: url("rings/ring-white-18.svg");
+}
+
+.ring-19.critical {
+	background-image: url("rings/ring-white-19.svg");
+}
+
+.ring-20.critical {
+	background-image: url("rings/ring-white-20.svg");
+}

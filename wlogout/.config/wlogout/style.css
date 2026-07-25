@@ -1,0 +1,36 @@
+@import "/home/afonso/Dotfiles/colors/.config/colors/colors.css";
+
+
+* {
+	color: @white;
+}
+
+window {
+	font-family: "JetBrains Mono Nerd Font";
+	font-size: 32px;
+	background-color: alpha(@black0, 0.9);
+}
+
+button {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 30%;
+	background-color: transparent;
+	animation: gradient_f 20s ease-in infinite;
+	transition: all 0.3s ease-in;
+	border-radius: 32px;
+	margin: 16px;
+	text-shadow: none;
+}
+
+#shutdown {
+	background-image: image(url("./icons/shutdown.png"));
+}
+
+#reboot {
+	background-image: image(url("./icons/reboot.png"));
+}
+
+#suspend {
+	background-image: image(url("./icons/suspend.png"));
+}
