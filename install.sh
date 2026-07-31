@@ -195,7 +195,7 @@ fi
 if [ "$YAY" = true ]; then
     print_info "Installing yay..."
     git config --global user.name "AfonsoHJ1812"
-    git config --global user.email "AfonsoHJ1812@hotmail.com"
+    git config --global user.email "AfonsoHJ1812@gmail.com"
     git clone https://aur.archlinux.org/yay.git ~/yay
     cd ~/yay
     makepkg -si --noconfirm
