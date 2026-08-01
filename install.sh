@@ -9,7 +9,6 @@ BASE_PACKAGES=(
     "libpsl"
     "nano"
     "noto-fonts-emoji"
-    "qt6ct"
     "tlp"
     "ttf-jetbrains-mono-nerd"
     "unrar"
