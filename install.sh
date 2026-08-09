@@ -223,7 +223,7 @@ if [ "$ENVIRONMENT" = true ]; then
         print_info "Setting up dotfiles..."
         cd ~/Dotfiles
         PACKAGES=$(find . -maxdepth 1 -type d -not -name ".*" -printf "%f ")
-        stow --adopt $PACKAGES
+        stow --no-folding --adopt $PACKAGES
         git restore .
         systemctl --user daemon-reload
         systemctl --user enable --now colors-apply.path
