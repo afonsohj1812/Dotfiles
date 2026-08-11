@@ -12,13 +12,21 @@ tip=""
 case "$metric" in
     cpu)
         icon=$(printf '\U000f035b')
-        sf=/tmp/waybar-ring-cpu
-        read -r _ u n s i io ir so _ < /proc/stat
-        total=$((u + n + s + i + io + ir + so)); idle=$((i + io))
-        if [[ -f $sf ]]; then read -r pt pi < "$sf"; else pt=0; pi=0; fi
-        echo "$total $idle" > "$sf"
+        sf="${XDG_RUNTIME_DIR:-/tmp}/waybar-ring-cpu"
+        read -r _ u n s i io ir so st _ < /proc/stat
+        total=$((u + n + s + i + io + ir + so + st)); idle=$((i + io))
+        pt=0; pi=0; ppct=0
+        [[ -f $sf ]] && read -r pt pi ppct < "$sf"
         dt=$((total - pt)); di=$((idle - pi))
-        (( dt > 0 )) && pct=$(( 100 * (dt - di) / dt )) || pct=0
+        if (( pt == 0 )); then
+            pct=0
+            echo "$total $idle $pct" > "$sf"
+        elif (( dt >= 50 )); then
+            pct=$(( 100 * (dt - di) / dt ))
+            echo "$total $idle $pct" > "$sf"
+        else
+            pct=$ppct
+        fi
         level_val=$pct
         tip="CPU ${pct}%"
         ;;
