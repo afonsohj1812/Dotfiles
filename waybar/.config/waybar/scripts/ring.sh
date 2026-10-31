@@ -5,9 +5,6 @@
 
 metric="$1"
 pct=0          # value used for warning/critical states (real % or real °C)
-level_val=0    # 0..100 used to choose the ring SVG
-icon=""
-tip=""
 
 case "$metric" in
     cpu)
@@ -27,19 +24,16 @@ case "$metric" in
         else
             pct=$ppct
         fi
-        level_val=$pct
         tip="CPU ${pct}%"
         ;;
     memory)
         icon=$(printf '\U0000f0c9')
         pct=$(free | awk '/^Mem:/{printf "%d", $3 / $2 * 100}')
-        level_val=$pct
         tip="RAM ${pct}%"
         ;;
     disk)
         icon=$(printf '\U0000e6ad')
         pct=$(df --output=pcent / | tail -1 | tr -dc '0-9')
-        level_val=$pct
         tip="Disk ${pct}%"
         ;;
     temp)
@@ -58,23 +52,16 @@ case "$metric" in
         ;;
 esac
 
+level_val=${level_val:-$pct}  # 0..100 used to choose the ring SVG
 (( level_val < 0 )) && level_val=0
 (( level_val > 100 )) && level_val=100
 level=$(( level_val * 20 / 100 ))
-(( level > 20 )) && level=20
 
 # Emit the critical class ourselves ($pct is real % for cpu/mem/disk,
 # real °C for temp) so coloring doesn't depend on waybar's custom-module states.
-case "$metric" in
-    cpu|memory) crit=90 ;;
-    disk)       crit=80 ;;
-    temp)       crit=90 ;;
-esac
-state=""
-(( pct >= crit )) && state="critical"
-
+[[ $metric == disk ]] && crit=80 || crit=90
 classes="\"ring\", \"ring-${level}\""
-[ -n "$state" ] && classes="${classes}, \"${state}\""
+(( pct >= crit )) && classes+=', "critical"'
 
 printf '{"text": "%s", "class": [%s], "percentage": %d, "tooltip": "%s"}\n' \
     "$icon" "$classes" "$pct" "$tip"

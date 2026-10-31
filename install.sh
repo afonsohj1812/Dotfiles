@@ -6,7 +6,6 @@ BASE_PACKAGES=(
     "brightnessctl"
     "docker-compose"
     "docker"
-    "jdk"
     "libpsl"
     "nano"
     "noto-fonts-emoji"
@@ -72,7 +71,7 @@ print_error() {
 
 confirm() {
     read -p "$1 (Y/n): " -r
-    [[ $REPLY =~ ^[Nn]$ ]] && return 1 || return 0
+    [[ ! $REPLY =~ ^[Nn]$ ]]
 }
 
 # Check if running as root (not recommended)
@@ -85,18 +84,6 @@ echo
 print_info "Arch Linux Setup - Configuration Questions"
 echo "================================================="
 echo
-
-PACMAN=false
-BASE=false
-FOLDERS=false
-GRUB=false
-AUTOLOGIN=false
-YAY=false
-NVIDIA=false
-ENVIRONMENT=false
-DOTFILES=false
-APPLICATIONS=false
-REBOOT=false
 
 if confirm "Connect to Wi-Fi?"; then
     print_info "Available Wi-Fi networks:"
@@ -233,7 +220,6 @@ if [ "$ENVIRONMENT" = true ]; then
 
         print_info "Setting up Chrome cookie whitelist..."
         sudo install -d -o "$USER" -g "$USER" /etc/opt/chrome/policies/managed
-        systemctl --user daemon-reload
         systemctl --user enable --now chrome-cookie-allowlist.path
         "$HOME/.local/bin/chrome-cookie-allowlist"
         print_success "Chrome cookie whitelist set up"

@@ -16,7 +16,6 @@ button {
 	background-position: center;
 	background-size: 30%;
 	background-color: transparent;
-	animation: gradient_f 20s ease-in infinite;
 	transition: all 0.3s ease-in;
 	border-radius: 32px;
 	margin: 16px;
@@ -24,13 +23,13 @@ button {
 }
 
 #shutdown {
-	background-image: image(url("./icons/shutdown.png"));
+	background-image: url("./icons/shutdown.png");
 }
 
 #reboot {
-	background-image: image(url("./icons/reboot.png"));
+	background-image: url("./icons/reboot.png");
 }
 
 #suspend {
-	background-image: image(url("./icons/suspend.png"));
+	background-image: url("./icons/suspend.png");
 }

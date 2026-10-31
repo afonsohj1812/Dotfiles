@@ -13,14 +13,8 @@ import os
 import subprocess
 from urllib.parse import urlparse
 
-BOOKMARKS = os.environ.get(
-    "CHROME_BOOKMARKS",
-    os.path.expanduser("~/.config/google-chrome/Default/Bookmarks"),
-)
-POLICY = os.environ.get(
-    "CHROME_COOKIE_POLICY",
-    "/etc/opt/chrome/policies/managed/cookie-allowlist.json",
-)
+BOOKMARKS = os.path.expanduser("~/.config/google-chrome/Default/Bookmarks")
+POLICY = "/etc/opt/chrome/policies/managed/cookie-allowlist.json"
 ALWAYS_KEEP = [
     "google.com",
 ]
@@ -75,7 +69,6 @@ def main():
         "CookiesSessionOnlyForUrls": ["*"],
         "CookiesAllowedForUrls": [f"[*.]{d}" for d in domains],
     }
-    os.makedirs(os.path.dirname(POLICY), exist_ok=True)
     tmp = POLICY + ".tmp"
     with open(tmp, "w") as f:
         json.dump(policy, f, indent=2)

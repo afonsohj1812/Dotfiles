@@ -122,7 +122,8 @@ gen_ring() { # $1=file  $2=progress-hex  $3=n(0..20)
 for n in $(seq 0 20); do
     gen_ring "$RINGS/ring-$n.svg"       "${C[red]}"   "$n"
     gen_ring "$RINGS/ring-white-$n.svg" "${C[white]}" "$n"
-done
+    printf '.ring-%s { background-image: url("rings/ring-%s.svg"); }\n.ring-%s.critical { background-image: url("rings/ring-white-%s.svg"); }\n' "$n" "$n" "$n" "$n"
+done > "$HOME/Dotfiles/waybar/.config/waybar/rings.css"
 
 # --- live-reload running apps (silent if not running) ---
 killall -SIGUSR2 waybar 2>/dev/null || true

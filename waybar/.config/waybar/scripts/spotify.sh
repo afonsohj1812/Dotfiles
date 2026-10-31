@@ -2,7 +2,6 @@
 
 PLAYER="spotify"
 MAX_LEN=16
-SPEED=1
 
 offset=0
 while true; do
@@ -35,7 +34,7 @@ while true; do
             REMAINING=$((MAX_LEN - ${#DISPLAY_TEXT}))
             DISPLAY_TEXT="${DISPLAY_TEXT}${TEXT:0:$REMAINING}"
         fi
-        offset=$(((offset + SPEED) % TLEN))
+        offset=$(((offset + 1) % TLEN))
     else
         DISPLAY_TEXT="${INFO:0:$MAX_LEN}"
         offset=0

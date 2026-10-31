@@ -31,8 +31,7 @@
 	"custom/weather": {
 		"interval": 60,
 		"exec": "/home/afonso/Dotfiles/waybar/.config/waybar/scripts/weather.sh",
-		"return-type": "json",
-		"format": "{}"
+		"return-type": "json"
 	},
 	"custom/spotify": {
 		"exec": "/home/afonso/Dotfiles/waybar/.config/waybar/scripts/spotify.sh",
@@ -149,25 +148,21 @@
 	"custom/cpu": {
 		"interval": 2,
 		"return-type": "json",
-		"exec": "/home/afonso/Dotfiles/waybar/.config/waybar/scripts/ring.sh cpu",
-		"format": "{}"
+		"exec": "/home/afonso/Dotfiles/waybar/.config/waybar/scripts/ring.sh cpu"
 	},
 	"custom/memory": {
 		"interval": 5,
 		"return-type": "json",
-		"exec": "/home/afonso/Dotfiles/waybar/.config/waybar/scripts/ring.sh memory",
-		"format": "{}"
+		"exec": "/home/afonso/Dotfiles/waybar/.config/waybar/scripts/ring.sh memory"
 	},
 	"custom/disk": {
 		"interval": 5,
 		"return-type": "json",
-		"exec": "/home/afonso/Dotfiles/waybar/.config/waybar/scripts/ring.sh disk",
-		"format": "{}"
+		"exec": "/home/afonso/Dotfiles/waybar/.config/waybar/scripts/ring.sh disk"
 	},
 	"custom/temperature": {
 		"interval": 5,
 		"return-type": "json",
-		"exec": "/home/afonso/Dotfiles/waybar/.config/waybar/scripts/ring.sh temp",
-		"format": "{}"
+		"exec": "/home/afonso/Dotfiles/waybar/.config/waybar/scripts/ring.sh temp"
 	}
 }
