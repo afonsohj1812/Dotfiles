@@ -229,7 +229,7 @@ fi
 if [ "$APPLICATIONS" = true ]; then
     print_info "Installing applications..."
     yay -S --noconfirm "${APP_PACKAGES[@]}"
-    sudo systemctl enable --now docker
+    sudo systemctl enable --now docker.socket
     sudo usermod -aG docker $USER
     print_success "Applications installed"
 fi

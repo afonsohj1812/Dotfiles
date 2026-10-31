@@ -35,6 +35,7 @@
 	},
 	"custom/spotify": {
 		"exec": "/home/afonso/Dotfiles/waybar/.config/waybar/scripts/spotify.sh",
+		"restart-interval": 5,
 		"format": " <span size='75%'>{}</span> ",
 		"tooltip": false
 	},
