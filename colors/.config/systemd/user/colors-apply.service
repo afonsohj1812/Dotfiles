@@ -1,6 +1,5 @@
 [Unit]
 Description=Regenerate every app's colours from the central palette
-# Cheap oneshot fired on every save — don't let rapid edits trip the rate limit.
 StartLimitIntervalSec=0
 
 [Service]

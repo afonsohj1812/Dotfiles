@@ -1,10 +1,7 @@
 #!/bin/bash
-# Emits waybar custom-module JSON for a system metric: the icon as the (centered)
-# text, and the fill level encoded as a CSS class (ring-0 .. ring-20) so the
-# stylesheet can pick the matching ring SVG background. $1 = cpu|memory|disk|temp
 
 metric="$1"
-pct=0          # value used for warning/critical states (real % or real °C)
+pct=0
 
 case "$metric" in
     cpu)
@@ -43,8 +40,8 @@ case "$metric" in
             [[ -r $z ]] || continue
             v=$(< "$z"); (( v > t )) && t=$v
         done
-        pct=$(( t / 1000 ))                 # real °C, used for states
-        level_val=$(( (pct - 30) * 100 / 60 ))  # map 30..90 °C -> 0..100
+        pct=$(( t / 1000 ))
+        level_val=$(( (pct - 30) * 100 / 60 ))
         tip="Temp ${pct}°C"
         ;;
     *)
@@ -52,13 +49,11 @@ case "$metric" in
         ;;
 esac
 
-level_val=${level_val:-$pct}  # 0..100 used to choose the ring SVG
+level_val=${level_val:-$pct}
 (( level_val < 0 )) && level_val=0
 (( level_val > 100 )) && level_val=100
 level=$(( level_val * 20 / 100 ))
 
-# Emit the critical class ourselves ($pct is real % for cpu/mem/disk,
-# real °C for temp) so coloring doesn't depend on waybar's custom-module states.
 [[ $metric == disk ]] && crit=80 || crit=90
 classes="\"ring\", \"ring-${level}\""
 (( pct >= crit )) && classes+=', "critical"'
