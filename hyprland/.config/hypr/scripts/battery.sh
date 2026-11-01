@@ -11,7 +11,7 @@ set_refresh() {
     [ "$1" = "Discharging" ] && rate=72 || rate=144
     [ "$rate" = "$last_rate" ] && return
     last_rate=$rate
-    hyprctl keyword monitor "eDP-1,1920x1080@${rate},auto,1"
+    hyprctl eval "hl.monitor({ output = 'eDP-1', mode = '1920x1080@${rate}', position = 'auto', scale = 1 })"
 }
 
 prev=$(cat "$battery" 2>/dev/null)
