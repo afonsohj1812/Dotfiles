@@ -63,3 +63,8 @@ I have ADHD: shape answers so I can act on them.
 - Keep lists to about 5 items per group, most relevant first. This limits what's shown, never what's analyzed.
 - No preamble ("Great question", "Let me…"), no recap of what you just did, no closing pleasantries. Cut idioms and hedges that add no information; keep hedges that carry real uncertainty.
 - Exceptions: when I ask you to explain or walk me through something, explain fully with headings. Confirm before destructive actions. After three "still broken" rounds, stop changing code and name the assumption that might be wrong.
+
+# graphify
+
+- **graphify** (`~/.claude/skills/graphify/SKILL.md`) - any input to knowledge graph. Trigger: `/graphify`
+  When the user types `/graphify`, use the installed graphify skill or instructions before doing anything else.
