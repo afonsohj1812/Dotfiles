@@ -41,9 +41,11 @@ APP_PACKAGES=(
     "google-chrome"
     "visual-studio-code-bin"
     "discord"
-    "graphify"
     "spotify"
     "spotify-adblock-git"
+    "graphify"
+    "godot"
+    "librepsrite"
 )
 
 set -e # Exit on any error
@@ -233,6 +235,18 @@ if [ "$APPLICATIONS" = true ]; then
     sudo systemctl enable --now docker.socket
     sudo usermod -aG docker $USER
     graphify install --platform claude
+    GODOT_SETTINGS=~/.config/godot/editor_settings-$(godot --version | cut -d. -f1,2).tres
+    if [ ! -f "$GODOT_SETTINGS" ]; then
+        mkdir -p ~/.config/godot
+        cat > "$GODOT_SETTINGS" << 'EOF'
+[gd_resource type="EditorSettings" format=3]
+
+[resource]
+text_editor/external/use_external_editor = true
+text_editor/external/exec_path = "/usr/bin/code"
+text_editor/external/exec_flags = "{project} --goto {file}:{line}:{col}"
+EOF
+    fi
     print_success "Applications installed"
 fi
 
