@@ -41,6 +41,7 @@ APP_PACKAGES=(
     "google-chrome"
     "visual-studio-code-bin"
     "discord"
+    "graphify"
     "spotify"
     "spotify-adblock-git"
 )
@@ -231,6 +232,7 @@ if [ "$APPLICATIONS" = true ]; then
     yay -S --noconfirm "${APP_PACKAGES[@]}"
     sudo systemctl enable --now docker.socket
     sudo usermod -aG docker $USER
+    graphify install --platform claude
     print_success "Applications installed"
 fi
 
