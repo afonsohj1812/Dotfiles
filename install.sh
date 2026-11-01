@@ -45,7 +45,7 @@ APP_PACKAGES=(
     "spotify-adblock-git"
     "graphify"
     "godot"
-    "librepsrite"
+    "libresprite"
 )
 
 set -e # Exit on any error
