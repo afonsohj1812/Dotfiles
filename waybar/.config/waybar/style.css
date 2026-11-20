@@ -1,5 +1,5 @@
-@import "/home/afonso/Dotfiles/colors/.config/colors/colors.css";
-@import "/home/afonso/Dotfiles/waybar/.config/waybar/rings.css";
+@import "../colors/colors.css";
+@import "rings.css";
 
 
 * {

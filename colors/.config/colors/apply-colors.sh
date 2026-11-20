@@ -97,6 +97,15 @@ for g in temp cpu free cached available used download upload; do
         "$g" "${C[red]}" "$g" "${C[orange]}" "$g" "${C[yellow]}" >> "$BTOP"
 done
 
+KDE="$HOME/.config/kdeglobals"
+awk -F= -v red="$(printf '%d,%d,%d' "0x${C[red]:0:2}" "0x${C[red]:2:2}" "0x${C[red]:4:2}")" '
+    /^\[/ { sec=$0 }
+    $1=="DecorationFocus" || $1=="DecorationHover" { print $1 "=" red; next }
+    $1=="ForegroundActive" && sec!="[Colors:Selection]" { print $1 "=" red; next }
+    $1=="BackgroundNormal" && sec=="[Colors:Selection]" { print $1 "=" red; next }
+    { print }
+' "$KDE" > "$KDE.tmp" && cat "$KDE.tmp" > "$KDE" && rm -f "$KDE.tmp"
+
 RINGS="$HOME/.config/waybar/rings"
 gen_ring() {
     local track off
@@ -112,7 +121,7 @@ for n in $(seq 0 20); do
     gen_ring "$RINGS/ring-$n.svg"       "${C[red]}"   "$n"
     gen_ring "$RINGS/ring-white-$n.svg" "${C[white]}" "$n"
     printf '.ring-%s { background-image: url("rings/ring-%s.svg"); }\n.ring-%s.critical { background-image: url("rings/ring-white-%s.svg"); }\n' "$n" "$n" "$n" "$n"
-done > "$HOME/Dotfiles/waybar/.config/waybar/rings.css"
+done > "$HOME/.config/waybar/rings.css"
 
 killall -SIGUSR2 waybar 2>/dev/null || true
 killall -SIGUSR1 kitty  2>/dev/null || true

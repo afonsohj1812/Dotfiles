@@ -1,7 +1,7 @@
 local vars = require("confs.variables")
 
 local mainMod = "SUPER"
-local scripts = "/home/afonso/Dotfiles/hyprland/.config/hypr/scripts"
+local scripts = "~/.config/hypr/scripts"
 local multimedia = { locked = true, repeating = true }
 
 hl.bind(mainMod .. " + BACKSPACE", hl.dsp.window.close())
@@ -39,7 +39,7 @@ hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set 50%+"), multim
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 50%-"), multimedia)
 hl.bind("XF86Calculator", hl.dsp.exec_cmd("kcalc"), multimedia)
 
-for i = 1, 6 do
+for i = 1, 4 do
     hl.bind(mainMod .. " + " .. i, hl.dsp.focus({ workspace = i }))
     hl.bind(mainMod .. " + SHIFT + " .. i, hl.dsp.window.move({ workspace = i }))
     hl.bind(mainMod .. " + CTRL + " .. i, hl.dsp.exec_cmd(scripts .. "/move-workspace.sh " .. i))
