@@ -80,7 +80,8 @@
 		"ignore-workspaces": [
 			"3",
 			"4"
-		]
+		],
+		"tooltip": false
 	},
 	"clock": {
 		"format": "{:%H:%M}",
@@ -95,7 +96,8 @@
 		"ignore-workspaces": [
 			"1",
 			"2"
-		]
+		],
+		"tooltip": false
 	},
 	"battery": {
 		"interval": 5,
@@ -123,7 +125,7 @@
 			"on-discharging-warning": "brightnessctl -s set 50% && notify-send -u normal -t 10000 -i battery-low 'Low battery!' 'Battery at 20%.'",
 			"on-discharging-critical": "brightnessctl -s set 0% && notify-send -u critical -i battery-empty 'Very Low Battery!' 'Battery at 10%.'"
 		},
-		"tooltip-format": "{capacity}%"
+		"tooltip-format": "{capacity}% - {power:.1f}W"
 	},
 	"backlight": {
 		"format": "{icon}",
