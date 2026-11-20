@@ -1,0 +1,9 @@
+[themes.default]
+selector = { fg = "Red" }
+tab_selected = { fg = "Red", add_modifier = "BOLD" }
+tab_marker = { fg = "Red" }
+volume_filled = { fg = "Red" }
+meter_active = { fg = "Red" }
+meter_overload = { fg = "White" }
+meter_center_active = { fg = "Red" }
+dropdown_selected = { fg = "Red", add_modifier = "REVERSED" }

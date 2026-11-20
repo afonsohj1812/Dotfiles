@@ -22,7 +22,6 @@ BASE_PACKAGES=(
 )
 
 ENVIRONMENT_PACKAGES=(
-	"wlogout"
     "btop"
     "clipse"
     "dolphin"
@@ -37,6 +36,8 @@ ENVIRONMENT_PACKAGES=(
     "starship"
     "stow"
     "waybar"
+    "wiremix"
+    "wlogout"
 )
 
 APP_PACKAGES=(
