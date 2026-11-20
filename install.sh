@@ -6,6 +6,7 @@ BASE_PACKAGES=(
     "brightnessctl"
     "docker-compose"
     "docker"
+    "intel-media-driver"
     "libpsl"
     "nano"
     "noto-fonts-emoji"
@@ -14,6 +15,7 @@ BASE_PACKAGES=(
     "ttf-jetbrains-mono-nerd"
     "unrar"
     "unzip"
+    "vulkan-intel"
     "xdg-desktop-portal-hyprland"
     "xdg-desktop-portal-kde"
     "zip"
@@ -122,10 +124,6 @@ if confirm "Install yay (AUR Helper)?"; then
     YAY=true
 fi
 
-if confirm "Setup NVIDIA support?"; then
-    NVIDIA=true
-fi
-
 if confirm "Install environment packages?"; then
     ENVIRONMENT=true
 
@@ -193,17 +191,6 @@ if [ "$YAY" = true ]; then
     cd ~
     rm -fr ~/yay
     print_success "Yay installed"
-fi
-
-if [ "$NVIDIA" = true ]; then
-    print_info "Installing NVIDIA packages..."
-    yay -S --noconfirm nvidia-open nvidia-utils lib32-nvidia-utils nvidia-settings
-    sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"/GRUB_CMDLINE_LINUX_DEFAULT="\1 nvidia-drm.modeset=1"/' /etc/default/grub
-    sudo grub-mkconfig -o /boot/grub/grub.cfg    
-    sudo sed -i 's/^MODULES=(\([^)]*\))/MODULES=(\1 nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
-    sudo mkinitcpio -P
-    sudo systemctl enable nvidia-suspend.service nvidia-resume.service nvidia-hibernate.service
-    print_success "NVIDIA packages installed"
 fi
 
 if [ "$ENVIRONMENT" = true ]; then
