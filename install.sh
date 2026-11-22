@@ -113,7 +113,7 @@ if confirm "Create essential folders?"; then
     FOLDERS=true
 fi
 
-if confirm "Disable GRUB timeout?"; then
+if confirm "Configure boot (GRUB timeout, splash)?"; then
     GRUB=true
 fi
 
@@ -169,6 +169,16 @@ if [ "$GRUB" = true ]; then
     sudo sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=0/' /etc/default/grub
     sudo grub-mkconfig -o /boot/grub/grub.cfg
     print_success "GRUB timeout disabled"
+
+    print_info "Setting boot splash..."
+    if grep -q '^default_uki=' /etc/mkinitcpio.d/linux.preset; then
+        sudo install -Dm644 ~/Dotfiles/Splash.bmp /usr/local/share/boot/splash.bmp
+        sudo sed -i 's|^#\?default_options=.*|default_options="--splash /usr/local/share/boot/splash.bmp"|' /etc/mkinitcpio.d/linux.preset
+        sudo mkinitcpio -P
+        print_success "Boot splash set"
+    else
+        print_warning "System doesn't boot a unified kernel image, boot splash skipped"
+    fi
 fi
 
 if [ "$AUTOLOGIN" = true ]; then
